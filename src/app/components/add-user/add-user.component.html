@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <mat-card style="width: 60%; margin-top: 5%; margin-bottom: 5%; padding: 5%;">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <h2>Add User</h2>
+        </div>
+        <form [formGroup]="userForm" fxLayout="column" fxLayoutGap="15px">
+            <input matInput type="text" formControlName="num" name="num" placeholder="Sr.No">
+            <input matInput type="text" formControlName="username" name="username" placeholder="username">
+            <div fxLayout="row">
+            <input matInput type="text" formControlName="password" name="password" placeholder="password" [type]="hide ? 'password' : 'text'">
+            <button class="visibilityIcon blue" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </div>
+            <input matInput type="text" formControlName="firstName" name="firstName" placeholder="first name">
+            <input matInput type="text" formControlName="lastName" name="lastName" placeholder="Last name">
+            <input matInput type="text" formControlName="age" name="age" placeholder="age">
+            <input matInput type="text" formControlName="salary" name="salary" placeholder="salary">
+            <input matInput type="text" formControlName="cardNo" name="cardNo" placeholder="credit card Number">
+            <button (click)="addUser()" mat-raised-button color="primary" style="width: 25%;">Add</button>
+        </form>
+    </mat-card>
+    
+</div>
