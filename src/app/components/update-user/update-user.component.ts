@@ -15,6 +15,8 @@ export class UpdateUserComponent implements OnInit {
 
   userForm: FormGroup;
 
+  currentUser: any = [];
+
 
   constructor(private route: ActivatedRoute,private userService: UserDetailsService,) { 
     this.userObj = new Details();
@@ -29,15 +31,12 @@ export class UpdateUserComponent implements OnInit {
     // debugger
     if(record !== null){
       const userList = JSON.parse(record);
-      // console.log(userList)
-      const currentUser = userList.find((m: any) => m.num == this.userObj.num);
-      if(currentUser !== undefined) {
-        this.userObj.username = currentUser.username;
-        this.userObj.firstName = currentUser.firstName;
-        this.userObj.lastName = currentUser.lastName;
-        this.userObj.age = currentUser.age;
-        this.userObj.salary = currentUser.salary;
-      }
+      console.log(userList)
+      this.currentUser = userList.find((m: any) => {
+        if(m.num == this.route.snapshot.params.id){
+          return m;
+        }
+      });
     }
   }
 
@@ -53,7 +52,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser(){
-    this.userService.add(this.userForm.value);
+    // console.log(this.currentUser)
+    this.userService.add(this.currentUser);
+
+    this.currentUser.reset();
   }
 
 }

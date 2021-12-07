@@ -25,17 +25,10 @@ data: any;
     let returnUrl: any = localStorage.getItem('todolist');
     
     if (returnUrl != null) {
-      console.log(JSON.parse(returnUrl))
+      // console.log(JSON.parse(returnUrl))
       return JSON.parse(returnUrl);
     }
     return null;
-  }
-
-  getById(id: any): any {
-    // let returnUrl: any = localStorage.getItem('todolist');
-    // let list: string[] = JSON.parse(returnUrl);
-    // list.push(id);
-    // localStorage.setItem('todolist', JSON.stringify(list));
   }
 
 

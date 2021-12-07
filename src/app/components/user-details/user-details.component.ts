@@ -19,6 +19,10 @@ export class UserDetailsComponent implements OnInit {
 
   userData: any = [];
 
+  cardNo: any;
+
+  maskValue: any;
+
   ELEMENT_DATA: Details[];
 
   displayedColumns: string[] = ['position', 'username', 'firstName', 'lastName', 'age', 'salary', 'card', 'action'];
@@ -34,7 +38,25 @@ export class UserDetailsComponent implements OnInit {
     var data;
     data = this.userService.getAll();
     this.userData = this.dataSource.data = data as Details[];
-    // console.log(this.userData)
+    this.cardNo = this.userData.map((m: any) => {
+      // console.log(m.cardNo)
+      return m.cardNo;
+    })
+    // console.log(this.userData.cardNo);
+    
+  }
+
+  number(maskValue: any){
+    if(maskValue){
+      // console.log(maskValue);
+      var mask = "";
+      for(let i=1; i<=maskValue[0].length - 2; i++){
+        mask += "x";
+      }
+      return mask + maskValue[0].slice(3, 6);
+    } else {
+      return null;
+    }
   }
 
   delete(index: any) {

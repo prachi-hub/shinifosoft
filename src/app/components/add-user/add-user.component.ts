@@ -18,24 +18,25 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       num: [''],
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      age: ['', [Validators.required]],
-      salary: ['', [Validators.required]],
-      cardNo: ['', [Validators.required]],
+      username: [''],
+      password: [''],
+      firstName: [''],
+      lastName: [''],
+      age: [''],
+      salary: [''],
+      cardNo: ['',Validators.minLength(16)],
     })
-
-    console.log(this.route.snapshot.params.id);
-    var snapData = this.userService.getById(this.route.snapshot.params.id);
   }
 
-  addUser(){
-    this.userService.add(this.userForm.value);
+  addUser() {
+    if (this.userForm.valid) {
+      this.userService.add(this.userForm.value);
+    }
     this.router.navigate(['/']);
+
+    this.userForm.reset();
   }
 
-  
+
 
 }

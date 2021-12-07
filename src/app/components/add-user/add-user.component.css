@@ -4,3 +4,18 @@ input{
     border-radius: 4px;
     padding: 2%;
 }
+
+.passCls{
+    width: 100%;
+}
+
+.card{
+    width: 60%; 
+    margin-top: 5%; 
+    margin-bottom: 5%; 
+    padding: 5%;
+}
+
+.Btn{
+    width: 25%;
+}

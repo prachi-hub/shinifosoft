@@ -1,23 +1,16 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-    <mat-card style="width: 60%; margin-top: 5%; margin-bottom: 5%; padding: 5%;">
+    <mat-card class="card">
         <div fxLayout="column" fxLayoutAlign="center center">
             <h2>Update User</h2>
         </div>
-        <form fxLayout="column" fxLayoutGap="15px">
-            <input matInput type="text" name="num" placeholder="Sr.No">
-            <input matInput type="text" [(ngModel)]="userObj.username" name="username" placeholder="username">
-            <div fxLayout="row">
-            <input matInput type="text" name="password" placeholder="password" [type]="hide ? 'password' : 'text'">
-            <button class="visibilityIcon blue" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </div>
-            <input matInput type="text" [(ngModel)]="userObj.firstName" name="firstName" placeholder="first name">
-            <input matInput type="text" [(ngModel)]="userObj.lastName" name="lastName" placeholder="Last name">
-            <input matInput type="text" [(ngModel)]="userObj.age" name="age" placeholder="age">
-            <input matInput type="text" [(ngModel)]="userObj.salary" name="salary" placeholder="salary">
-            <input matInput type="text" [(ngModel)]="userObj.cardNo" name="cardNo" placeholder="credit card Number">
-            <button (click)="updateUser()" mat-raised-button color="primary" style="width: 25%;">Update</button>
+        <form fxLayout="column" fxLayoutGap="15px" autocomplete="off">
+            <input matInput type="text" [(ngModel)]="currentUser.num" name="num" placeholder="Sr.No" readonly>
+            <input matInput type="text" [(ngModel)]="currentUser.username" name="username" placeholder="username">
+            <input matInput type="text" [(ngModel)]="currentUser.firstName" name="firstName" placeholder="first name">
+            <input matInput type="text" [(ngModel)]="currentUser.lastName" name="lastName" placeholder="Last name">
+            <input matInput type="text" [(ngModel)]="currentUser.age" name="age" placeholder="age">
+            <input matInput type="text" [(ngModel)]="currentUser.salary" name="salary" placeholder="salary">
+            <button class="Btn" (click)="updateUser()" mat-raised-button color="primary">Update</button>
         </form>
     </mat-card>
     
